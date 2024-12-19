@@ -6,6 +6,7 @@ void main() {
   runApp(const ToDoApp());
 }
 
+//Esta es mi primera comunicación entre editores
 class ToDoApp extends StatelessWidget {
   const ToDoApp({Key? key}) : super(key: key);
 
