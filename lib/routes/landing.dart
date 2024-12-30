@@ -18,92 +18,96 @@ class Landing extends StatelessWidget {
           fontWeight: FontWeight.bold,
         );
 
-    const spacing = 10.0;
+    return const Scaffold(
+      body: Auth(),
+    );
+  }
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          const Positioned(
-            bottom: spacing,
-            right: spacing,
-            child: Row(
-              children: [
-                AnimatedIconButton(
-                  url: 'https://github.com/appwrite/appwrite',
-                  assetName: 'assets/github.svg',
-                  semanticsLabel: 'GitHub Logo',
-                ),
-                SizedBox(width: spacing / 2),
-                AnimatedIconButton(
-                  url: 'https://twitter.com/appwrite_io',
-                  assetName: 'assets/twitter.svg',
-                  semanticsLabel: 'Twitter Logo',
-                ),
-                SizedBox(width: spacing / 2),
-                AnimatedIconButton(
-                  url: 'http://appwrite.io',
-                  assetName: 'assets/appwrite.svg',
-                  semanticsLabel: 'Appwrite Logo',
-                ),
-              ],
-            ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+  Stack antiguoFront(
+      TextStyle? textStyle, TextStyle? headlineStyle, BuildContext context) {
+    const spacing = 10.0;
+    return Stack(
+      children: [
+        const Positioned(
+          bottom: spacing,
+          right: spacing,
+          child: Row(
             children: [
-              Center(
-                child: Text(
-                  "Introducing",
-                  style: textStyle,
-                ),
+              AnimatedIconButton(
+                url: 'https://github.com/appwrite/appwrite',
+                assetName: 'assets/github.svg',
+                semanticsLabel: 'GitHub Logo',
               ),
-              const SizedBox(height: spacing),
-              Center(
-                child: Text(
-                  "toTooooDoooo",
-                  style: headlineStyle,
-                ),
+              SizedBox(width: spacing / 2),
+              AnimatedIconButton(
+                url: 'https://twitter.com/appwrite_io',
+                assetName: 'assets/twitter.svg',
+                semanticsLabel: 'Twitter Logo',
               ),
-              const SizedBox(height: spacing),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  style: textStyle,
-                  children: [
-                    const TextSpan(text: 'A Simple To-do App built with '),
-                    WidgetSpan(
-                      child: SvgPicture.asset(
-                        'assets/appwrite.svg',
-                        semanticsLabel: 'Appwrite Logo',
-                        height: 30,
-                      ),
-                    ),
-                    const TextSpan(text: ' Appwrite and '),
-                    WidgetSpan(
-                      child: SvgPicture.asset(
-                        'assets/flutter.svg',
-                        semanticsLabel: 'Flutter Logo',
-                        height: 25,
-                      ),
-                    ),
-                    const TextSpan(text: ' Flutter'),
-                  ],
-                ),
-              ),
-              const SizedBox(height: spacing),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Auth()),
-                  );
-                },
-                child: const Text('Get Started'),
+              SizedBox(width: spacing / 2),
+              AnimatedIconButton(
+                url: 'http://appwrite.io',
+                assetName: 'assets/appwrite.svg',
+                semanticsLabel: 'Appwrite Logo',
               ),
             ],
           ),
-        ],
-      ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                "Introducing",
+                style: textStyle,
+              ),
+            ),
+            const SizedBox(height: spacing),
+            Center(
+              child: Text(
+                "toTooooDoooo",
+                style: headlineStyle,
+              ),
+            ),
+            const SizedBox(height: spacing),
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                style: textStyle,
+                children: [
+                  const TextSpan(text: 'A Simple To-do App built with '),
+                  WidgetSpan(
+                    child: SvgPicture.asset(
+                      'assets/appwrite.svg',
+                      semanticsLabel: 'Appwrite Logo',
+                      height: 30,
+                    ),
+                  ),
+                  const TextSpan(text: ' Appwrite and '),
+                  WidgetSpan(
+                    child: SvgPicture.asset(
+                      'assets/flutter.svg',
+                      semanticsLabel: 'Flutter Logo',
+                      height: 25,
+                    ),
+                  ),
+                  const TextSpan(text: ' Flutter'),
+                ],
+              ),
+            ),
+            const SizedBox(height: spacing),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Auth()),
+                );
+              },
+              child: const Text('Get Started'),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

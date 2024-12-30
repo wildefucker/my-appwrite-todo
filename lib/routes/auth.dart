@@ -66,81 +66,117 @@ class _AuthState extends State<Auth> {
     const spacing = 10.0;
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              isSignUp ? "Sign Up" : "Login",
-              style: headlineStyle,
-            ),
-            const SizedBox(height: spacing),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: isSignUp
-                        ? "Already have an account ? "
-                        : "Don't have an account ? ",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  WidgetSpan(
-                    child: InkWell(
-                      onTap: toggleSignUp,
-                      child: Text(
-                        isSignUp ? 'Login' : 'Sign Up',
-                        style: const TextStyle(
-                          decoration: TextDecoration.underline,
-                        ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Card(
+            child: SizedBox(
+              width: 300,
+              height: 300,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      isSignUp ? "Sign Up" : "Login",
+                      style: headlineStyle,
+                    ),
+                    const SizedBox(height: spacing),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: isSignUp
+                                ? "Already have an account ? "
+                                : "Don't have an account ? ",
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          WidgetSpan(
+                            child: InkWell(
+                              onTap: toggleSignUp,
+                              child: Text(
+                                isSignUp ? 'Login' : 'Sign Up',
+                                style: const TextStyle(
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            if (isSignUp) const SizedBox(height: spacing),
-            if (isSignUp)
-              TextFormField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: "Name",
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                    if (isSignUp) const SizedBox(height: spacing),
+                    if (isSignUp)
+                      TextFormField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+                          labelText: "Name",
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                        ),
+                      ),
+                    const SizedBox(height: spacing),
+                    TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        labelText: "Email",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                      ),
+                    ),
+                    const SizedBox(height: spacing),
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: true,
+                      textInputAction: TextInputAction.send,
+                      decoration: const InputDecoration(
+                        labelText: "Password",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                      ),
+                      onFieldSubmitted: (value) {
+                        submit();
+                      },
+                    ),
+                    const SizedBox(height: spacing),
+                    ElevatedButton(
+                      onPressed: submit,
+                      child: Text(
+                        isSignUp ? "Sign Up" : "Login",
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            const SizedBox(height: spacing),
-            TextFormField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: "Email",
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-              ),
             ),
-            const SizedBox(height: spacing),
-            TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              textInputAction: TextInputAction.send,
-              decoration: const InputDecoration(
-                labelText: "Password",
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-              ),
-              onFieldSubmitted: (value) {
-                submit();
-              },
-            ),
-            const SizedBox(height: spacing),
-            ElevatedButton(
-              onPressed: submit,
-              child: Text(
-                isSignUp ? "Sign Up" : "Login",
-              ),
-            ),
-          ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+Column CardMethod() {
+  return const Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Card(child: _SampleCard(cardName: 'Elevated Card')),
+      Card.filled(child: _SampleCard(cardName: 'Filled Card')),
+      Card.outlined(child: _SampleCard(cardName: 'Outlined Card')),
+    ],
+  );
+}
+
+class _SampleCard extends StatelessWidget {
+  const _SampleCard({required this.cardName});
+  final String cardName;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 300,
+      height: 100,
+      child: Center(child: Text(cardName)),
     );
   }
 }
